@@ -3,6 +3,8 @@
 class Tools
 {
 
+    public static $dev = true;
+
     /**
      * Pris sans regrets a PrestaShop.
      * Verifie les tableaux POST et GET (dans cet ordre) pour retrouver un parametre, et le purifie si necessaire.

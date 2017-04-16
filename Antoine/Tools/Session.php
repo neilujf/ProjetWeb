@@ -8,7 +8,7 @@ class Session
      */
     public static function isTeacherLogged()
     {
-        // C'est pas moi qui gere les sessions, haha !
+        // TODO
         return true;
     }
 

@@ -58,8 +58,12 @@ function sendMailForPeriod($id_teacher, $dateStart, $dateEnd)
     $headers[] = 'MIME-Version: 1.0';
     $headers[] = 'Content-type: text/plain; charset=utf-8';
     $headers[] = 'To: ' . $myTeacher['prenom'] . " " . $myTeacher['nom'] . ' <' . $myTeacher['email'] . '>';
-    echo '<pre>' . $mailContent . '</pre>';
-    //return mail($myTeacher['email'], $mailSubject, $mailContent, $headers);
+
+    if (!Tools::$dev) {
+        return mail($myTeacher['email'], $mailSubject, $mailContent, $headers);
+    } else {
+        echo '<pre>' . $mailContent . '</pre>';
+    }
 }
 
 sendMailForPeriod(1, '01-01-2017', '21-07-2018');
