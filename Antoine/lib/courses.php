@@ -1,5 +1,7 @@
 <?php
 
+require_once dirname(__FILE__) . '/../Tools/Db.php';
+
 /**
  * Class Courses
  * Les formations
