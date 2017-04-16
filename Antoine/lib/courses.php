@@ -21,7 +21,7 @@ class Courses
     {
         $db = Db::getInstance();
         return $db->fetchAll('SELECT cours.*, form.nom as formation FROM cours ' .
-            'INNER JOIN formations as form ON form.id_cours = cours.id ' .
+            'INNER JOIN formations as form ON form.id = cours.id_formation ' .
             'INNER JOIN professeurs as prof ON prof.id = form.id_professeurs ' .
             'WHERE UNIX_TIMESTAMP(cours.date_debut) >= ' . strtotime($dateStart) . ' ' .
             'AND UNIX_TIMESTAMP(cours.date_fin) < ' . strtotime($dateEnd) . ' ' .

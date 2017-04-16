@@ -15,7 +15,7 @@ class Session
     public static function getTeacherId()
     {
         // TODO
-        return 1;
+        return 1000;
     }
 
 }

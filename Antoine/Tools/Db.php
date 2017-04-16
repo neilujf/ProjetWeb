@@ -9,8 +9,10 @@ class Db
 
     private function __construct()
     {
-        self::$PDO = new PDO('mysql:host=' . DB_SERVER . ';dbname=' . DB_NAME, DB_LOGIN, DB_PASS);
-        self::$PDO->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        if (!self::$PDO) {
+            self::$PDO = new PDO('mysql:host=' . DB_SERVER . ';dbname=' . DB_NAME, DB_LOGIN, DB_PASS);
+            self::$PDO->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
+        }
     }
 
     /**
@@ -38,6 +40,10 @@ class Db
     public function fetchAll($sql)
     {
         $statement = self::$PDO->query($sql);
+        if (false === $statement) {
+            $error = self::$PDO->errorInfo();
+            throw new Exception(implode(' - ', $error));
+        }
         return $statement->fetchAll();
     }
 
